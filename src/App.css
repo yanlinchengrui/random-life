@@ -9,11 +9,14 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  height: 173px;
   padding: 20px;
   color: white;
   margin-bottom: 2em;
+  background-image:-webkit-linear-gradient(left, #3494e6 0, #ec6ead 100%);
+	background-image:-o-linear-gradient(left, #3494e6 0, #ec6ead 100%);
+	background-image:linear-gradient(to right, #3494e6 0, #ec6ead 100%);
+	background-repeat:repeat-x;
 }
 
 .App-title {
@@ -33,31 +36,47 @@
 .Adding {
   margin-left: 0.5em;
   background-color: aqua;
-  font-size: 2em;
+  font-size: 1.2em;
   border-radius: 0.5em;
+  border-width: 1;
+  border-color: #ec6ead;
 }
 
 .TextBox {
-  font-size: 2em;
+  font-size: 1.2em;
+  border-width: 1;
+  border-color: black;
 }
 
 .Return {
-  background-color: blueviolet;
+  background-color: aqua;
   font-size: 1.5em;
   border-radius: 0.5em;
   margin-top: 0.25em;
+  border-width: 1;
+  border-color: #ec6ead;
 }
 
 .Object {
   background-color: crimson;
   font-size: 2em;
-  margin: 20px 36%;
-  border-radius: 2em
+  margin: 20px 16%;
+  border-radius: 2em;
 }
 
 .Result {
   font-size: 2.5em;
   font-style: italic;
+}
+
+.Clear {
+  background-color: greenyellow;
+  font-size: 1.5em;
+  border-radius: 0.5em;
+  margin-top: 0.25em;
+  margin-left: 0.5em;
+  border-width: 1;
+  border-color: #ec6ead;
 }
 
 @keyframes App-logo-spin {

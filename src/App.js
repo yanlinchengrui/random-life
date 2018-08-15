@@ -15,6 +15,7 @@ class App extends Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleRandom = this.handleRandom.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
   handleAdd(event) {
@@ -25,7 +26,7 @@ class App extends Component {
       currObjs.push(textBox.value);
       textBox.value = '';
       this.setState({
-        objs: currObjs
+        objs : currObjs
       });
     }
   }
@@ -36,14 +37,21 @@ class App extends Component {
     //const match = currObj.trim() == this.state.objs[0].trim();
     //match ? alert("YEA") : alert("NO");
     this.setState({
-      objs: updatedObjs
+      objs : updatedObjs
     });
   }
 
   handleRandom() {
     let currObjs = this.state.objs;
     this.setState({
-      rand: currObjs[Math.floor(Math.random() * currObjs.length)]
+      rand : currObjs[Math.floor(Math.random() * currObjs.length)]
+    });
+  }
+
+  handleClear() {
+    this.setState({
+      objs : [],
+      rand : ''
     });
   }
 
@@ -68,13 +76,17 @@ class App extends Component {
         <input className="TextBox" type="text" />
 
         <button className="Adding" onClick={this.handleAdd}>
-          add
+          ADD
         </button>
 
         <ul> {objItem} </ul>
 
         <button className="Return" onClick={this.handleRandom}>
-          RETURN
+          RUN
+        </button>
+
+        <button className="Clear" onClick={this.handleClear}>
+          CLEAR
         </button>
 
         <p className="Result"> {this.state.rand} </p>
