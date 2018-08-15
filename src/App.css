@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -12,14 +13,51 @@
   height: 150px;
   padding: 20px;
   color: white;
+  margin-bottom: 2em;
 }
 
 .App-title {
   font-size: 1.5em;
+  font-style: italic;
 }
 
 .App-intro {
   font-size: large;
+}
+
+.PS {
+  color: yellow;
+  font-size: 0.8em;
+}
+
+.Adding {
+  margin-left: 0.5em;
+  background-color: aqua;
+  font-size: 2em;
+  border-radius: 0.5em;
+}
+
+.TextBox {
+  font-size: 2em;
+}
+
+.Return {
+  background-color: blueviolet;
+  font-size: 1.5em;
+  border-radius: 0.5em;
+  margin-top: 0.25em;
+}
+
+.Object {
+  background-color: crimson;
+  font-size: 2em;
+  margin: 20px 36%;
+  border-radius: 2em
+}
+
+.Result {
+  font-size: 2.5em;
+  font-style: italic;
 }
 
 @keyframes App-logo-spin {
