@@ -1,22 +1,28 @@
 .App {
   text-align: center;
   align-items: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  font-family: 'Sniglet', cursive;
+  margin-bottom: 60px;
 }
 
 .App-header {
-  height: 173px;
-  padding: 20px;
-  color: white;
+  color: indigo;
   margin-bottom: 2em;
-  background-image:-webkit-linear-gradient(left, #3494e6 0, #ec6ead 100%);
-	background-image:-o-linear-gradient(left, #3494e6 0, #ec6ead 100%);
-	background-image:linear-gradient(to right, #3494e6 0, #ec6ead 100%);
+  background-image:-webkit-linear-gradient(left, #fdbb2d 0, #22c1c3 92%);
+	background-image:-o-linear-gradient(left, #fdbb2d 0, #22c1c3 92%);
+	background-image:linear-gradient(to right, #fdbb2d 0, #22c1c3 92%);
 	background-repeat:repeat-x;
+}
+
+.App-footer {
+  margin-top: 2em;
+  background-image:-webkit-linear-gradient(left, #22c1c3 0, #fdbb2d 92%);
+	background-image:-o-linear-gradient(left, #22c1c3 0, #fdbb2d 92%);
+	background-image:linear-gradient(to right, #22c1c3 0, #fdbb2d 92%);
+  background-repeat:repeat-x;
+  width: 50vw;
+  margin: 0 auto;
+  border-radius: 16px;
 }
 
 .App-title {
@@ -28,58 +34,59 @@
   font-size: large;
 }
 
-.PS {
-  color: yellow;
+.ps {
+  color: indigo;
   font-size: 0.8em;
 }
 
-.Adding {
-  margin-left: 0.5em;
-  background-color: aqua;
-  font-size: 1.2em;
-  border-radius: 0.5em;
-  border-width: 1;
-  border-color: #ec6ead;
-}
-
-.TextBox {
+.textBox {
   font-size: 1.2em;
   border-width: 1;
   border-color: black;
+  margin-right: 0.5em;
+  width: 33vw;
 }
 
-.Return {
+.return {
   background-color: aqua;
   font-size: 1.5em;
   border-radius: 0.5em;
   margin-top: 0.25em;
   border-width: 1;
-  border-color: #ec6ead;
 }
 
-.Object {
+.object {
   background-color: crimson;
   font-size: 2em;
   margin: 20px 16%;
   border-radius: 2em;
 }
 
-.Result {
+.result {
   font-size: 2.5em;
   font-style: italic;
 }
 
-.Clear {
-  background-color: greenyellow;
-  font-size: 1.5em;
-  border-radius: 0.5em;
-  margin-top: 0.25em;
-  margin-left: 0.5em;
-  border-width: 1;
-  border-color: #ec6ead;
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.myChoices-enter {
+  opacity: 0.01;
+}
+
+.myChoices-enter.myChoices-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.myChoices-leave {
+  opacity: 1;
+}
+
+.myChoices-leave.myChoices-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

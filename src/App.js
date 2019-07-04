@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Jumbotron from './components/Jumbotron';
+import { Button, ListGroup, ListGroupItem } from 'reactstrap';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './App.css';
 
 class App extends Component {
@@ -8,88 +10,108 @@ class App extends Component {
     super(props);
     this.state = {
 
-      objs : [ 'pho', 'ramen', 'diet'],
-      rand : ''
-    
+      objs: ['pho', 'ramen', 'diet'],
+      rand: ''
+
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleRandom = this.handleRandom.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleAdd(event) {
-    let currObjs = this.state.objs;
-    let textBox = event.target.previousElementSibling;
+    const currObjs = this.state.objs;
+    const textBox = event.target.previousElementSibling;
 
     if (textBox.value) {
       currObjs.push(textBox.value);
       textBox.value = '';
-      this.setState({
-        objs : currObjs
-      });
+      this.setState({ objs: currObjs });
+    }
+  }
+
+  handleEnter(event) {
+    if ((event.keyCode === 13 || event.key === 'Enter') && event.target.value) {
+      event.preventDefault();
+      const currObjs = this.state.objs;
+      currObjs.push(event.target.value);
+      this.setState({ objs: currObjs });
+      event.target.value = '';
     }
   }
 
   handleDelete(event) {
     let currObj = event.target.textContent;
     let updatedObjs = this.state.objs.filter((obj) => obj.trim() !== currObj.trim());
-    //const match = currObj.trim() == this.state.objs[0].trim();
-    //match ? alert("YEA") : alert("NO");
     this.setState({
-      objs : updatedObjs
+      objs: updatedObjs
     });
   }
 
   handleRandom() {
     let currObjs = this.state.objs;
     this.setState({
-      rand : currObjs[Math.floor(Math.random() * currObjs.length)]
+      rand: currObjs[Math.floor(Math.random() * currObjs.length)]
     });
   }
 
   handleClear() {
     this.setState({
-      objs : [],
-      rand : ''
+      objs: [],
+      rand: ''
     });
   }
 
   render() {
 
-    let objItem = this.state.objs.map( 
-      (obj, i) => {return <li className="Object" 
-                              onClick={this.handleDelete} 
-                              key = {i}> 
-                              {obj} 
-                          </li>}
+    let objItem = this.state.objs.map(
+      (obj, i) => {
+        return (
+          <ListGroupItem onClick={this.handleDelete} key={i} style={{ cursor: "pointer", border: "1px solid black", backgroundColor: "gold", marginBottom: "3px" }}>
+            {obj}
+          </ListGroupItem>);
+      }
     );
 
     return (
-      <div className="App">    
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title"> Be a random person and do the right tings!</h1>
-          <p className="PS"> P.S. CLICK TO DELETE</p>
-        </header>
+      <div className="App">
+        <Jumbotron />
 
-        <input className="TextBox" type="text" />
+        <form onKeyPress={this.handleEnter}>
+          <input autoFocus type="textarea" className="textBox" name="text" placeholder="TELL ME" />
+          <Button color="warning" onClick={this.handleAdd}>
+            ADD
+          </Button>
+        </form>
 
-        <button className="Adding" onClick={this.handleAdd}>
-          ADD
-        </button>
+        <ListGroup className="my-5" style={{ width: "50vw", margin: "0 auto", fontSize: "1.5em" }}>
+          <ReactCSSTransitionGroup
+            transitionName="myChoices"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
 
-        <ul> {objItem} </ul>
+            {objItem}
+          </ReactCSSTransitionGroup>
+        </ListGroup>
 
-        <button className="Return" onClick={this.handleRandom}>
-          RUN
-        </button>
+        <form>
+          <Button color="success" onClick={this.handleRandom}>
+            RUN
+          </Button>
+          <Button color="danger" className="ml-3" onClick={this.handleClear}>
+            CLEAR
+          </Button>
+        </form>
 
-        <button className="Clear" onClick={this.handleClear}>
-          CLEAR
-        </button>
+        {
+          this.state.rand &&
+          <p className="result mt-5 App-footer">
+            <span role="img" aria-label="checkmark">✔️</span>️ {this.state.rand}
+          </p>
+        }
 
-        <p className="Result"> {this.state.rand} </p>
       </div>
     );
   }
